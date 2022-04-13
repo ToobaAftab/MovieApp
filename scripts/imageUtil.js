@@ -1,5 +1,5 @@
-const getImageUrl = (basePath) => {
-  return `${config.image_base_url}${basePath}`;
+const getImageUrl = (poster_path) => {
+  return `${config.image_base_url}${poster_path}`;
 };
 
 // The idea to use it?
