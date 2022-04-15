@@ -29,7 +29,6 @@ async function getMovies() {
   const popularMovies = await getPopularMovies();
   const topRatedMovies = await getTopRatedMovies();
   const upcomingMovies = await getUpcomingMovies();
-  console.log((topRatedMovies))
   return [
       {
         category: "Popular",
@@ -37,6 +36,8 @@ async function getMovies() {
           id: currentValue.id,
           image: getImageUrl(currentValue.poster_path),
           title: currentValue.title,
+          release_date: currentValue.release_date,
+          overview: currentValue.overview,
         }))
       },
       {
@@ -45,6 +46,8 @@ async function getMovies() {
           id: currentValue.id,
           image: getImageUrl(currentValue.poster_path),
           title: currentValue.title,
+          release_date: currentValue.release_date,
+          overview: currentValue.overview,
         }))
       },
       
@@ -52,8 +55,10 @@ async function getMovies() {
         category: "Upcoming",
         movies: upcomingMovies.results.map((currentValue)=> ({
           id: currentValue.id,
-          image: getImageUrl(currentValue.backdrop_path),
+          image: getImageUrl(currentValue.poster_path),
           title: currentValue.title,
+          release_date: currentValue.release_date,
+          overview: currentValue.overview,
         }))
       }
     ]
