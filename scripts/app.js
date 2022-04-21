@@ -7,52 +7,31 @@ const modalLabel = document.createElement("h5");
 const imgDiv = document.createElement("div");
 const contentDiv = document.createElement("div");
 const img = document.createElement("img");
+var moviesList = null;
 
 displayMoviesList();
 
-function getMoviesList(element){
-    return element.movies?.map(currentElement => {
-        const {title, release_date, overview} = currentElement;
+function getMoviesList(element,categoryIndex){
+    return element.movies?.map((currentElement, movieIndex) => {
         return `<div class="card-img col-md-2 mb-2 bg-dark">
         <img src="${currentElement.image}" data-toggle="modal" data-target="#movieModal" 
-        onclick="viewDetails('${title}','${release_date}','${overview}','${currentElement.image}')"/>
+        onclick="viewDetails(${categoryIndex},${movieIndex})"/>
         </div>`;
     }).join("");
 }
 
 async function displayMoviesList() {
-    const moviesList = await getMovies();
-    const displayMovies = moviesList?.map((currentElement) => {
+     moviesList = await getMovies();
+    const displayMovies = moviesList?.map((currentElement,categoryIndex) => {
         return `<h2>${currentElement.category}</h2>
-    <div class="d-flex flex-row flex-wrap"> ${getMoviesList(currentElement)} </div>`;
+    <div class="d-flex flex-row flex-wrap"> ${getMoviesList(currentElement,categoryIndex)} </div>`;
     }).join("");
 
     movies.innerHTML = displayMovies;
 }
 
-function viewDetails(title,release_date,overview,image) {
-    // //header is populated
-    // modalLabel.classList.add("modal-title", "text-primary");
-    // modalLabel.id = "movieModalLabel";
-    // modalLabel.innerHTML = title;
-    // modalHeader.appendChild(modalLabel);
-
-    // //body is populated
-    // //image is displayed
-    // imgDiv.classList.add("card-img", "d-inline-block");
-    
-    // img.setAttribute("src",image);
-    // imgDiv.appendChild(img);
-    // modalBody.appendChild(imgDiv);
-
-    // //further details are populated
-    // contentDiv.classList.add("text-primary","d-inline-block", "flex-column", "align-content-stretch", "col-md-6");
-    // const titleMovie = document.createElement("h3");
-    // titleMovie.classList.add("p-2","my-5");
-    // titleMovie.innerHTML = `Movie Title: ${title}`;
-    // contentDiv.appendChild(titleMovie);
-    // modalBody.appendChild(contentDiv);
-
+function viewDetails(categoryIndex,movieIndex) {
+    const {title,image, release_date, overview} = moviesList[categoryIndex].movies[movieIndex];
     modal.innerHTML = `<div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -74,16 +53,12 @@ function viewDetails(title,release_date,overview,image) {
       </div>
     </div>
   </div>`;
- 
-    console.log(modal);
 }
 
 function closeModal() {
     modal.innerHTML = "";
 }
 
-modal.addEventListener('click', function(event) {
+page.addEventListener('click', function(event) {
     closeModal();
-console.log(event);
-console.log(modal);
 })
