@@ -2,8 +2,10 @@ const BASE_URL = config.api_base_url;
 const API_KEY = config.api_key;
 
 async function getPopularMovies(page = 1) {
-    const popularMovies = `${BASE_URL}movie/popular?api_key=${API_KEY}&language=en-US`;
-    return fetch(popularMovies).then(result => result.json());
+  const popularMovies = `${BASE_URL}movie/popular?api_key=${API_KEY}&language=en-US`;
+  const response = await fetch(popularMovies);
+  const data = await response.json(); 
+  return data;
   //console.log(popularMovies);
 // HERE WE NEED TO USE API: "movie/popular"
 // Refer the link below to get insight on how to use this API
@@ -11,14 +13,18 @@ async function getPopularMovies(page = 1) {
 // https://developers.themoviedb.org/3/movies/get-popular-movies
 }
 
-async function getTopRatedMovies(page = 1) {
+ async function getTopRatedMovies(page = 1) {
   const topRatedMovies = `${BASE_URL}movie/top_rated?api_key=${API_KEY}&language=en-US`;
-  return fetch(topRatedMovies).then(result => result.json());
+  const response = await fetch(topRatedMovies);
+  const data = await response.json(); 
+  return data;
 }
 
 async function getUpcomingMovies(page = 1) {
   const upcomingMovies = `${BASE_URL}movie/upcoming?api_key=${API_KEY}&language=en-US`;
-  return fetch(upcomingMovies).then(result => result.json());
+  const response = await fetch(upcomingMovies);
+  const data = await response.json(); 
+  return data;
 }
 
 async function getMovieDetail (movieId) {
