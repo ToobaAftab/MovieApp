@@ -1,7 +1,47 @@
-.header{
-    background-color: rgb(128, 128, 128);
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+   }
+   body {
+    font-family: cursive;
+   }
+   a {
+    text-decoration: none;
+   }
+   li {
+    list-style: none;
+   }
+
+/* NavBar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    width: auto;
+    background-color: teal;
+    color: #fff;
+}
+.nav-link a {
+    color: #fff;
 }
 
+.menu {
+    display: flex;  
+    font-size: 18px;
+}
+.menu li:hover {
+    background-color: #4c9e9e;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+.menu li {
+    padding: 5px 14px;
+}
+
+/* Movie cards */
 .card-img {
 padding-left: 5px !important;
 padding-right: 5px !important;
@@ -14,6 +54,31 @@ object-fit: cover;
 
 }
 
+/* Modal */
 .modal-body img{
     object-fit: cover;
 }
+
+/* Spinner */
+#loading {
+    position: fixed;
+    top: 0; left: 0; z-index: 9999;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 0.2s;
+  }
+   
+  #loading img {
+    position: absolute;
+    top: 25%; left: 50%;
+    transform: translate(-50%);
+  }
+
+  #loading {
+    visibility: hidden;
+    opacity: 0;
+  }
+  #loading.show {
+    visibility: visible;
+    opacity: 1;
+  }

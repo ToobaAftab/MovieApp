@@ -11,6 +11,13 @@ var moviesList = null;
 
 displayMoviesList();
 
+function show () {
+  document.getElementById("loading").classList.add("show");
+}
+function hide () {
+  document.getElementById("loading").classList.remove("show");
+}
+
 function getMoviesList(element,categoryIndex){
     return element.movies?.map((currentElement, movieIndex) => {
         return `<div class="card-img col-md-2 mb-2 bg-dark">
@@ -21,12 +28,13 @@ function getMoviesList(element,categoryIndex){
 }
 
 async function displayMoviesList() {
+    show();
      moviesList = await getMovies();
     const displayMovies = moviesList?.map((currentElement,categoryIndex) => {
         return `<h2>${currentElement.category}</h2>
     <div class="d-flex flex-row flex-wrap"> ${getMoviesList(currentElement,categoryIndex)} </div>`;
     }).join("");
-
+    hide();
     movies.innerHTML = displayMovies;
 }
 
