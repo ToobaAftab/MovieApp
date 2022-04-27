@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesheet.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Netflix Clone</title>
+  </head>
+  <body class="bg-dark text-white">
+    <div id="pageWrapper" class="p-4">
+      <div class="row header pl-3 mb-3 text-white d-flex justify-content-between">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+          <div class="container-fluid">
+            <h1 class="navbar-brand col-xs-2"><a class="nav-link" href="index.html">Movies</a></h1>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span> 
+            </button>
+              <div class="collapse navbar-collapse">
+              <ul class="navbar-nav menu">
+                <li class="nav-item active">
+                  <a class="nav-link" href="movies.html">Popular</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="movies.html">Top Rated</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="movies.html">Upcoming</a>
+                </li>
+              </ul>
+            </div>
+              <div class="d-flex ms-auto">
+                <form class="form-inline d-flex ms-auto my-lg-0">
+                  <input class="form-control me-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn button-success ml-10 my-sm-0" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+        </div>
+        <div id="paginatedMovies">
+        </div>
+          <div id="loading">
+            <img src="images/download.gif">
+          </div>
+          <nav>
+            <ul class="pagination" id="pagination">
+                <!-- <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li> -->
+              </ul>
+          </nav>
+      </div>
+    
+
+    <div class="modal fade" id="movieModal" tabindex="-1" role="dialog" aria-labelledby="movieModalLabel" aria-hidden="true">
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+  <script src="scripts/config.js"></script>
+  <script src="scripts/imageUtil.js"></script>
+  <script src="scripts/data.js"></script>
+  <script src="scripts/api.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/paginatedPage.js"></script>
+</html>
