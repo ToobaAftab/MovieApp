@@ -9,31 +9,33 @@
     <title>Netflix Clone</title>
   </head>
   <body class="bg-dark text-white">
-    <div id="page-wrapper" class="p-4" id="page">
+    <div id="pageWrapper" class="p-4">
       <div class="row header pl-3 mb-3 text-white d-flex justify-content-between">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
           <div class="container-fluid">
-          <h1 class="navbar-brand col-xs-2">Movies</h1>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span> 
-          </button>
-          <div class="collapse navbar-collapse">
-            <ul class="navbar-nav menu">
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Popular</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Top Rated</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="#">Upcoming</a>
-              </li>
-            </ul>
-            <form class="form-inline d-flex ms-auto my-lg-0">
-              <input class="form-control me-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn button-success ml-10 my-sm-0" type="submit">Search</button>
-            </form>
-          </div>
+            <h1 class="navbar-brand col-xs-2"><a class="nav-link" href="index.html">Movies</a></h1>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span> 
+            </button>
+              <!-- <div class="collapse navbar-collapse"> -->
+              <ul class="navbar-nav menu">
+                <li class="nav-item active">
+                  <a class="nav-link" href="movies.html?category=popular">Popular</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="movies.html?category=topRated">Top Rated</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="movies.html?category=upcoming">Upcoming</a>
+                </li>                 
+              </ul>
+            <!-- </div> -->
+              <div class="d-flex ms-auto">
+                <form class="form-inline d-flex ms-auto my-lg-0">
+                  <input class="form-control me-sm-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn button-success ml-10 my-sm-0" type="submit">Search</button>
+                </form>
+              </div>
             </div>
           </nav>
         </div>
@@ -57,4 +59,5 @@
   <script src="scripts/data.js"></script>
   <script src="scripts/api.js"></script>
   <script src="scripts/app.js"></script>
+  <script src="scripts/paginatedPage.js"></script>
 </html>

@@ -67,6 +67,13 @@ function closeModal() {
     modal.innerHTML = "";
 }
 
-page.addEventListener('click', function(event) {
+pageWrapper.addEventListener('click', function(event) {
     closeModal();
 })
+
+function setURL(category) {
+  const queryParameter = new URLSearchParams(window.location.search);
+  queryParameter.set('category', category);
+  console.log(window.location.href)
+  window.location.search = queryParameter;
+}
