@@ -6,6 +6,8 @@ var pageLi = "";
 var totalPages = 0;
 
 getCurrentMovies(currentPage);
+console.log(totalPages)
+pagination.innerHTML = createPagination(totalPages,2)
 // pages = paginate()
 // pagination.innerHTML = `<li class="page-item"><a class="page-link" href="#">Previous</a></li>
 // <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -13,6 +15,67 @@ getCurrentMovies(currentPage);
 // <li class="page-item"><a class="page-link" href="#">3</a></li>
 // <li class="page-item"><a class="page-link" href="#">Next</a></li>`;
 
+function createPagination (totalPages,currentPage){
+    console.log(currentPage)
+    let str = '<ul>';
+  let active;
+  let pageCutLow = currentPage - 1;
+  let pageCutHigh = currentPage + 1;
+
+  if (currentPage > 1) {
+    str += '<li class="page-item previous no"><a class="page-link" onclick="createPagination(totalPages, '+(currentPage-1)+');getCurrentMovies('+(currentPage-1)+');" >Previous</a></li>';
+  }
+
+  if (totalPages < 6) {
+    for (let p = 1; p <= totalPages; p++) {
+      active = currentPage == p ? "active" : "no";
+      str += '<li class="'+active+'"><a class="page-link"  onclick="createPagination(totalPages, '+p+');getCurrentMovies('+p+');">'+ p +'</a></li>';
+    }
+  }
+  else{
+    if (currentPage > 2) {
+        str += '<li class="no page-item"><a onclick="createPagination(totalPages, 1);getCurrentMovies('+1+');">1</a></li>';
+        if (currentPage > 3) {
+            str += '<li class="out-of-range"><a onclick="createPagination(totalPages,'+(currentPage-2)+');getCurrentMovies('+(currentPage)+');">...</a></li>';
+        }
+      }
+
+      if (currentPage === 1) {
+        pageCutHigh += 2;
+      } else if (currentPage === 2) {
+        pageCutHigh += 1;
+      }
+
+      if (currentPage === totalPages) {
+        pageCutLow -= 2;
+      } else if (currentPage === totalPages-1) {
+        pageCutLow -= 1;
+      }
+
+      for (let p = pageCutLow; p <= pageCutHigh; p++) {
+        if (p === 0) {
+          p += 1;
+        }
+        if (p > totalPages) {
+          continue
+        }
+        active = currentPage == p ? "active" : "no";
+        str += '<li class="page-item '+active+'"><a onclick="createPagination(totalPages, '+p+');getCurrentMovies('+p+');">'+ p +'</a></li>';
+      }
+      
+      if (currentPage < totalPages-1) {
+        if (currentPage < totalPages-2) {
+          str += '<li class="out-of-range"><a onclick="createPagination(totalPages,'+(currentPage+2)+');getCurrentMovies('+currentPage+');">...</a></li>';
+        }
+        str += '<li class="page-item no"><a onclick="createPagination(totalPages, totalPages);getCurrentMovies('+currentPage+');">'+totalPages+'</a></li>';
+      }
+    }
+    str += '</ul>';
+
+    pagination.innerHTML = str;
+
+    return str
+}
 
 
 function getQueryParameter(){
@@ -37,10 +100,10 @@ async function getCurrentMovies(page){
     }
     currentPage = result.page;
     totalPages = result.total_pages;
-    displayMovies = displayMovies + getAllMovies(result) + `</div>`;
+    displayMovies += getAllMovies(result) + `</div>`;
     paginatedMovies.innerHTML = displayMovies;
-    pagination.innerHTML = paginate(result)
-console.log(paginate(result))
+    //pagination.innerHTML = paginate(result)
+//console.log(paginate(result))
 }
 
 const getAllMovies = (result) => {

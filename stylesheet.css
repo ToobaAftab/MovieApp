@@ -16,7 +16,7 @@
 .header{
   display: inline-block;
   width: 100%;
-  
+
 }
 
 /* NavBar */
@@ -86,4 +86,42 @@ object-fit: cover;
   #loading.show {
     visibility: visible;
     opacity: 1;
+  }
+
+  #pagination {
+    display: flex;
+    height: 30vh;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
+
+  #pagination ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    
+  }
+
+  #pagination ul.li{
+    color:  #3D315B;
+    display: flex;
+    
+  }
+  #pagination li a {
+      background-color:rgb(120, 144, 252);
+      padding: 5px 10px;
+      border: 2px solid #6428fd;
+      border-right: 0;
+      color: #3D315B;
+  }
+
+  #pagination li.active a{
+    background-color: #9AB87A;
+  }
+
+  #pagination li:first-child a {
+    border-radius: 5px 0 0 5px;
+    color: #3D315B;
   }
