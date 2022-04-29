@@ -6,14 +6,8 @@ var pageLi = "";
 var totalPages = 0;
 
 getCurrentMovies(currentPage);
-console.log(totalPages)
-pagination.innerHTML = createPagination(totalPages,2)
-// pages = paginate()
-// pagination.innerHTML = `<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-// <li class="page-item"><a class="page-link" href="#">1</a></li>
-// <li class="page-item"><a class="page-link" href="#">2</a></li>
-// <li class="page-item"><a class="page-link" href="#">3</a></li>
-// <li class="page-item"><a class="page-link" href="#">Next</a></li>`;
+console.log(totalPages);
+//pagination.innerHTML = createPagination(totalPages,2);
 
 function createPagination (totalPages,currentPage){
     console.log(currentPage)
@@ -102,8 +96,7 @@ async function getCurrentMovies(page){
     totalPages = result.total_pages;
     displayMovies += getAllMovies(result) + `</div>`;
     paginatedMovies.innerHTML = displayMovies;
-    //pagination.innerHTML = paginate(result)
-//console.log(paginate(result))
+    pagination.innerHTML = createPagination(totalPages,currentPage);
 }
 
 const getAllMovies = (result) => {
