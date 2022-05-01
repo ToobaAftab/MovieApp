@@ -9,8 +9,6 @@ const contentDiv = document.createElement("div");
 const img = document.createElement("img");
 var moviesList = null;
 
-displayMoviesList();
-
 function show () {
   document.getElementById("loading").classList.add("show");
 }
@@ -39,6 +37,7 @@ async function displayMoviesList() {
 }
 
 function viewDetails(categoryIndex,movieIndex) {
+  debugger;
     const {title,image, release_date, overview} = moviesList[categoryIndex].movies[movieIndex];
     modal.innerHTML = `<div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
@@ -62,14 +61,6 @@ function viewDetails(categoryIndex,movieIndex) {
     </div>
   </div>`;
 }
-
-function closeModal() {
-    modal.innerHTML = "";
-}
-
-pageWrapper.addEventListener('click', function(event) {
-    closeModal();
-})
 
 function setURL(category) {
   const queryParameter = new URLSearchParams(window.location.search);
