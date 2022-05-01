@@ -37,7 +37,6 @@ async function displayMoviesList() {
 }
 
 function viewDetails(categoryIndex,movieIndex) {
-  debugger;
     const {title,image, release_date, overview} = moviesList[categoryIndex].movies[movieIndex];
     modal.innerHTML = `<div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
